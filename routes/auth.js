@@ -32,12 +32,17 @@ router.get('/authorize', (req, res) => {
     let client = hackerschool.client();
     client.setToken(token);
     client.people.me().then(function(RCData) {
+      let batches = RCData.batches;
+      let batchesStr = '';
+      for (var batch in RCData.batches) {
+        batchesStr += batches[batch].name + '  ';
+      }
       User.findOrCreate({where: {token: accessToken}, defaults: {expiration: token.token.expires_at, email: RCData.email}})
       .spread(user => {
         res.cookie('email', RCData.email);
         res.cookie('firstName', RCData.first_name);
         res.cookie('lastName', RCData.last_name);
-        res.cookie('batches', RCData.batches);
+        res.cookie('batches', batchesStr);
         res.cookie('token', accessToken);
         res.redirect('/');
       })

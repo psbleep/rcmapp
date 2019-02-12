@@ -92,6 +92,7 @@ export class InfoWindow extends React.Component {
             '<h2 id="firstHeading" class="firstHeading">' + 
             item.first_name + " " + item.last_name +
             '</h2>'+
+            '<h3>' + item.batches + '</h3>' +
             '<div id="bodyContent">'+
             '<ul>' +
                 '<li>Social: ' + item.social + '</li>' +

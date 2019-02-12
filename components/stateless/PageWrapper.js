@@ -31,7 +31,7 @@ const PageWrapper = WrappedComponent => {
                     <GoogleContainer
                         firstName = {this.props.firstName}
                         lastName = {this.props.lastName}
-                        batch = {this.props.batches}
+                        batches = {this.props.batches}
                         email = {this.props.email}
                         isAdd = {isAdd}
                     />
